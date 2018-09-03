@@ -1,0 +1,45 @@
+{{> admin/_message}}
+<table class="table table-bordered">
+   <thead>
+     <tr>
+       <th>ID</th>
+       <th>Title</th>
+       <th>Status</th>
+       <th>Category</th>
+       <th>Allow Comments</th>
+       <th>Body</th>
+       <th>Image</th>
+       <th>Created At</th>
+       <th>View</th>
+       <th>Edit</th>
+       <th>Delete</th>
+     </tr>
+   </thead>
+
+   <tbody>
+   	{{#each posts}}
+   	 <tr>
+   	 	<td>{{id}}</td>
+   	 	<td>{{title}}</td>
+   	 	<td>{{status}}</td>
+      <td>{{category.name}}</td>
+   	 	<td>{{allowComments}}</td>
+   	 	<td>{{stripTags (truncate body 150)}}</td>
+      <td> <img src="/uploads/{{file}}" width="80px" height="80px"> </td>
+      <td>{{formatDate date 'MMMM Do YYYY'}}</td>
+   	 	<td> <a href="/post/show/{{id}}">View</a> </td>
+      <td><a href="/admin/posts/edit/{{id}}" class="btn btn-xs btn-info"><i class="fa fa-pencil"></i></a></td>
+      <td>
+        <form method="POST" action="/admin/posts/delete/{{id}}?_method=DELETE">
+          <input type="hidden" name="_method" value="DELETE">
+          <button class="btn btn-danger btn-xs" type="submit">Delete</button>
+        </form>
+      </td>
+   	 </tr>
+   	 {{else}}
+   	 <tr colspan="5">
+   	 	<td>No Data</td>
+   	 </tr>
+   	 {{/each}}
+   </tbody>
+</table>

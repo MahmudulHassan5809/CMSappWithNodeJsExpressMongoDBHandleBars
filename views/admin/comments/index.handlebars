@@ -1,0 +1,33 @@
+{{> admin/_message}}
+<h1>Comments</h1>
+<table class="table table-inverse">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Owner</th>
+            <th>Approve Comment</th>
+			<th>Date</th>
+			<th>Delete</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{#each comments}}
+		<tr>
+			<td>{{id}}</td>
+			<td>{{user.firstName}}</td>
+			<td>
+
+				<input data-id="{{id}}" type="checkbox" {{#if approveComment}} checked {{/if}} name="approveComment">
+
+			</td>
+			<td>{{formatDate date 'MMMM Do YYYY'}}</td>
+			<td>
+			<form method="POST" action="/admin/comments/delete/{{id}}?_method=DELETE">
+	          <input type="hidden" name="_method" value="DELETE">
+	          <button class="btn btn-danger btn-xs" type="submit">Delete</button>
+	        </form>
+	       </td>
+		</tr>
+		{{/each}}
+	</tbody>
+</table>

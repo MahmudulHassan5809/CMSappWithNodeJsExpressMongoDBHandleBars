@@ -1,0 +1,56 @@
+<form action="/admin/posts/edit/{{post.id}}?_method=PUT" method="POST" enctype="multipart/form-data">
+   <input type="hidden" name="_method" value="PUT">
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input required="" value="{{post.title}}" name="title" type="text" class="form-control" id="title" placeholder="Enter title" >
+    </div>
+
+    <div class="form-group">
+        <label for="file">File Upload</label>
+        <input type="file" name="file" class="form-control" >
+        <img src="/uploads/{{post.file}}">
+    </div>
+
+
+    <div class="form-group">
+        <label for="status">Categories</label>
+        <select name="category" id="category" class="form-control">
+           {{#select post.category}}
+            {{#each categories}}
+             <option value="{{id}}">{{name}}</option>
+             {{/each}}
+           {{/select}}
+        </select>
+    </div>
+
+
+    <div class="form-group">
+        <label for="status">Status</label>
+        <select name="status" id="status" class="form-control">
+          {{#select post.status}}
+            <option value="public" selected>Public</option>
+            <option value="private">Private</option>
+            <option value="draft">Draft</option>
+          {{/select}}
+        </select>
+    </div>
+
+    <div class="form-check">
+        <label for="allowComments" class="form-check-label">
+        <input name="allowComments" type="checkbox" class="form-check-input" id="allowComments" {{#if post.allowComments}} checked="checked" {{/if}}>
+            Allow Comments
+        </label>
+    </div>
+
+    <div class="form-group">
+        <label for="body">Body</label>
+        <textarea required  name="body" cols="30" rows="10" class="form-control" id="body" placeholder="Enter Description">
+         {{post.body}}
+        </textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Post</button>
+
+</form>
+
+

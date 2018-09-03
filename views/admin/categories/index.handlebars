@@ -1,0 +1,51 @@
+<div class="row">
+	<div class="col-sm-4">
+		<h3>Create Category</h3>
+
+
+       <form action="/admin/categories/create" method="POST">
+           <div class="form-group">
+           	  <label>Name</label>
+           	  <input type="text" name="name" placeholder="Enter Title" class="form-control" required="">
+           </div>
+
+           <button type="submit" class="btn-dark btn btn-block">Create Category</button>
+       </form>
+	</div>
+
+	<div class="col-sm-8">
+		<h3>All Ctegories</h3>
+    {{> admin/_message}}
+		<table class="table table-bordered">
+             <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+             </thead>
+             <tbody>
+             	{{#each categories}}
+             	<tr>
+                   <td>{{id}}</td>
+                   <td>{{name}}</td>
+                   <td>{{formatDate date 'MMMM Do YYYY'}}</td>
+                   <td><a href="/admin/categories/edit/{{id}}"><i class="fa fa-pencil"></i></a></td>
+                   <td>
+                     <form method="POST" action="/admin/categories/delete/{{id}}?_method=DELETE">
+                      <input type="hidden" name="_method" value="DELETE">
+                      <button class="btn btn-danger btn-xs" type="submit">Delete</button>
+                     </form>
+                   </td>
+             	</tr>
+             	{{else}}
+                 <tr>
+                 	<td colspan="3">No Data</td>
+                 </tr>
+             	{{/each}}
+             </tbody>
+		</table>
+	</div>
+</div>

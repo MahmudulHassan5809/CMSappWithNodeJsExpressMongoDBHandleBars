@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Blog Home - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/home/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/home/css/blog-home.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    {{> home/_navbar}}
+
+    <!-- Page Content -->
+    <div class="container">
+      {{!-- {{> home/_errors}} --}}
+      {{> home/_message}}
+
+      {{{body}}}
+
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    {{> home/_footer}}
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/home/vendor/jquery/jquery.min.js"></script>
+    <script src="/home/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>
